@@ -32,17 +32,17 @@ const CustomCursor: React.FC = () => {
 
   return (
     <>
-      {/* Main Dot */}
+      {/* Main Dot - Hidden on Mobile */}
       <div
-        className="fixed top-0 left-0 w-3 h-3 bg-luxury-gold rounded-full pointer-events-none z-[100] mix-blend-difference transition-transform duration-100 ease-out"
+        className="hidden md:block fixed top-0 left-0 w-3 h-3 bg-luxury-gold rounded-full pointer-events-none z-[100] mix-blend-difference transition-transform duration-100 ease-out"
         style={{
           transform: `translate3d(${position.x - 6}px, ${position.y - 6}px, 0) scale(${hovered ? 0 : 1})`
         }}
       />
       
-      {/* View Circle / Ring */}
+      {/* View Circle / Ring - Hidden on Mobile */}
       <div
-        className={`fixed top-0 left-0 flex items-center justify-center rounded-full pointer-events-none z-[100] border border-luxury-gold/50 transition-all duration-300 ease-out`}
+        className={`hidden md:flex fixed top-0 left-0 items-center justify-center rounded-full pointer-events-none z-[100] border border-luxury-gold/50 transition-all duration-300 ease-out`}
         style={{
           transform: `translate3d(${position.x - (hovered ? 40 : 16)}px, ${position.y - (hovered ? 40 : 16)}px, 0)`,
           width: hovered ? '80px' : '32px',

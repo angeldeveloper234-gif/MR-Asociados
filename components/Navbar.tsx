@@ -13,12 +13,21 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isOpen]);
+
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-500 ease-out ${scrolled ? 'py-4 bg-luxury-black/80 backdrop-blur-md border-b border-white/5' : 'py-8 bg-transparent'}`}>
+    <nav className={`fixed w-full z-[90] transition-all duration-500 ease-out ${scrolled ? 'py-4 bg-luxury-black/80 backdrop-blur-md border-b border-white/5' : 'py-8 bg-transparent'}`}>
       <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
         
         {/* Logo */}
-        <a href="#inicio" className="hover-trigger relative group z-50">
+        <a href="#inicio" className="hover-trigger relative group z-[90]">
           <div className="flex flex-col">
             <span className="font-serif text-2xl font-bold tracking-tight text-luxury-white">
               MR <span className="text-luxury-gold">&</span> ASOCIADOS
@@ -44,20 +53,21 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden hover-trigger text-luxury-white z-50"
+          className="md:hidden hover-trigger text-luxury-white z-[90] relative"
           onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle Menu"
         >
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
 
         {/* Mobile Nav Overlay */}
-        <div className={`fixed inset-0 bg-luxury-black z-40 flex items-center justify-center transition-opacity duration-500 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-          <div className="flex flex-col gap-8 text-center">
+        <div className={`fixed inset-0 bg-luxury-black z-[80] flex items-center justify-center transition-all duration-500 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+          <div className="flex flex-col gap-8 text-center w-full px-6">
             {['Inicio', 'Servicios', 'Firma', 'Contacto'].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="font-serif text-4xl text-luxury-white hover:text-luxury-gold transition-colors hover:italic"
+                className="font-serif text-4xl text-luxury-white hover:text-luxury-gold transition-colors hover:italic py-2"
                 onClick={() => setIsOpen(false)}
               >
                 {item}
