@@ -32,11 +32,11 @@ const Services: React.FC = () => {
   const [activeService, setActiveService] = useState<number | null>(null);
 
   return (
-    <section id="servicios" className="bg-luxury-black py-32 relative z-20">
+    <section id="servicios" className="bg-luxury-black py-20 md:py-32 relative z-20">
       <div className="container mx-auto px-6 md:px-12">
         
-        <div className="mb-20 flex flex-col md:flex-row justify-between items-end border-b border-white/10 pb-8">
-          <h2 className="font-serif text-4xl md:text-6xl text-luxury-white">
+        <div className="mb-16 md:mb-20 flex flex-col md:flex-row justify-between items-end border-b border-white/10 pb-8">
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-luxury-white">
             Nuestros <span className="italic text-luxury-muted">Servicios</span>
           </h2>
           <span className="text-luxury-gold text-xs font-bold uppercase tracking-widest mt-4 md:mt-0">
@@ -48,49 +48,56 @@ const Services: React.FC = () => {
           {SERVICES_DATA.map((service, index) => (
             <div 
               key={service.id}
-              className="group hover-trigger border-b border-white/10 transition-all duration-500 ease-in-out hover:border-luxury-gold/30"
+              className="group hover-trigger border-b border-white/10 transition-all duration-500 ease-in-out hover:border-luxury-gold/30 cursor-pointer"
               onMouseEnter={() => setActiveService(index)}
               onMouseLeave={() => setActiveService(null)}
+              onClick={() => setActiveService(activeService === index ? null : index)} // Tap to toggle on mobile
             >
-              <div className="py-12 flex flex-col md:flex-row gap-8 md:items-center relative overflow-hidden">
+              <div className="py-8 md:py-10 flex flex-col relative overflow-hidden">
                 
-                {/* ID */}
-                <span className="font-sans text-xs md:text-sm text-luxury-muted group-hover:text-luxury-gold transition-colors w-12">
-                  {service.id}
-                </span>
+                {/* Top Row: ID, Title, Arrow */}
+                <div className="flex items-center justify-between gap-4">
+                  <span className="font-sans text-xs md:text-sm text-luxury-muted group-hover:text-luxury-gold transition-colors w-8 md:w-12">
+                    {service.id}
+                  </span>
 
-                {/* Title */}
-                <h3 className="font-serif text-3xl md:text-5xl text-luxury-white group-hover:text-luxury-white/90 group-hover:translate-x-4 transition-transform duration-500 flex-1">
-                  {service.title}
-                </h3>
+                  <h3 className="font-serif text-2xl md:text-4xl lg:text-5xl text-luxury-white group-hover:text-luxury-white/90 group-hover:translate-x-4 transition-transform duration-500 flex-1">
+                    {service.title}
+                  </h3>
 
-                {/* Arrow Icon */}
-                <ArrowUpRight className="w-6 h-6 text-luxury-muted group-hover:text-luxury-gold group-hover:rotate-45 transition-all duration-500 opacity-0 md:opacity-100 group-hover:opacity-100" />
+                  <ArrowUpRight className={`w-5 h-5 md:w-6 md:h-6 text-luxury-muted group-hover:text-luxury-gold transition-all duration-500 ${activeService === index ? 'rotate-45 text-luxury-gold' : ''}`} />
+                </div>
 
-                {/* Expanded Content (Desktop) - Styled as a floating visual or inline expansion */}
+                {/* Accordion Content - Expands Height */}
                 <div 
-                  className={`hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 w-[400px] pointer-events-none transition-all duration-500 ease-out ${
-                    activeService === index ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+                  className={`overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${
+                    activeService === index ? 'max-h-[500px] opacity-100 mt-8' : 'max-h-0 opacity-0 mt-0'
                   }`}
                 >
-                  <div className="bg-luxury-charcoal p-1 rounded-sm border border-white/10">
-                    <img 
-                      src={service.image} 
-                      alt={service.title}
-                      className="w-full h-48 object-cover grayscale opacity-80"
-                    />
-                    <div className="p-4">
-                      <p className="text-luxury-white/70 text-sm leading-relaxed">
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                    {/* Empty space to align with title */}
+                    <div className="hidden md:block md:col-span-1"></div>
+                    
+                    {/* Image */}
+                    <div className="md:col-span-4 h-48 md:h-56 w-full relative overflow-hidden rounded-sm">
+                      <img 
+                        src={service.image} 
+                        alt={service.title}
+                        className="absolute inset-0 w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-1000"
+                      />
+                    </div>
+
+                    {/* Description */}
+                    <div className="md:col-span-5 flex flex-col justify-center">
+                      <p className="text-luxury-white/80 text-base md:text-lg leading-relaxed font-light">
                         {service.description}
                       </p>
+                      <span className="mt-6 text-luxury-gold text-xs font-bold uppercase tracking-widest flex items-center gap-2 opacity-0 transform translate-y-4 transition-all duration-500 delay-100 group-hover:opacity-100 group-hover:translate-y-0">
+                        Más Información <span className="w-8 h-[1px] bg-luxury-gold"></span>
+                      </span>
                     </div>
                   </div>
                 </div>
-
-                {/* Mobile description (always visible if need be, or standard flow) */}
-                <p className="md:hidden text-luxury-white/60 text-sm mt-4">
-                  {service.description}
-                </p>
 
               </div>
             </div>

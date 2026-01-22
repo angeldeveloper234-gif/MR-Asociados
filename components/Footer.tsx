@@ -7,9 +7,9 @@ const Footer: React.FC = () => {
       
       <div className="container mx-auto h-full flex flex-col justify-between">
         
-        {/* Massive Call to Action */}
-        <div className="max-w-4xl">
-           <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-[0.9] mb-8">
+        {/* Massive Call to Action - Adjusted sizes */}
+        <div className="max-w-5xl">
+           <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl leading-[0.95] mb-8">
              PROTEGEMOS <br/> 
              <span className="text-luxury-gold">SUS INTERESES.</span> <br/>
              AGENDE HOY.
@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
              href={`https://wa.me/${CONTACT_INFO.whatsapp}`}
              target="_blank"
              rel="noopener noreferrer"
-             className="hover-trigger inline-block border-b border-luxury-white/30 hover:border-luxury-gold text-xl hover:text-luxury-gold transition-all pb-1"
+             className="hover-trigger inline-block border-b border-luxury-white/30 hover:border-luxury-gold text-lg md:text-xl hover:text-luxury-gold transition-all pb-1"
            >
              Iniciar conversación &rarr;
            </a>
@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div className="flex flex-col gap-4 font-sans text-sm text-luxury-muted text-right">
-            <div className="flex gap-4 mb-2">
+            <div className="flex gap-4 mb-2 justify-end">
               <a href="#" className="hover:text-luxury-gold transition-colors">Instagram</a>
               <a href="#" className="hover:text-luxury-gold transition-colors">Facebook</a>
             </div>
@@ -51,7 +51,7 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Large Background Year */}
-        <div className="absolute bottom-[-5%] right-[-5%] font-serif text-[20vw] leading-none text-white/5 pointer-events-none select-none z-[-1]">
+        <div className="absolute bottom-[-5%] right-[-5%] font-serif text-[15vw] leading-none text-white/5 pointer-events-none select-none z-[-1]">
           2026
         </div>
 
