@@ -1,43 +1,55 @@
 import React from 'react';
-import { IMAGES } from '../constants';
 
 const Hero: React.FC = () => {
   return (
-    <section id="inicio" className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat bg-fixed"
-        style={{ backgroundImage: `url(${IMAGES.hero})` }}
-      >
-        <div className="absolute inset-0 bg-petrol-900/80 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-black/40" />
+    <section id="inicio" className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-luxury-black">
+      
+      {/* Abstract Background */}
+      <div className="absolute inset-0 z-0 opacity-40">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-luxury-black/20 to-luxury-black"></div>
+        <img 
+          src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2301&auto=format&fit=crop" 
+          alt="Architecture" 
+          className="w-full h-full object-cover grayscale brightness-50 contrast-125"
+        />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center text-white max-w-4xl mt-16">
-        <h1 className="font-serif text-4xl md:text-5xl lg:text-7xl font-bold mb-6 leading-tight animate-in slide-in-from-bottom-5 fade-in duration-700">
-          Soluciones Legales para <br/>
-          <span className="text-teal-400">Asuntos Complicados</span>
-        </h1>
-        
-        <p className="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto leading-relaxed animate-in slide-in-from-bottom-5 fade-in duration-700 delay-150">
-          En MR & Asociados brindamos asesoría legal integral con un enfoque humano y profesional. 
-          Protegemos lo que más le importa con experiencia, ética y compromiso.
-        </p>
-        
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in slide-in-from-bottom-5 fade-in duration-700 delay-300">
-          <a 
-            href="#contacto" 
-            className="w-full sm:w-auto px-8 py-4 bg-white text-petrol-900 font-bold rounded-sm hover:bg-gray-100 transition-all uppercase tracking-wider text-sm shadow-xl"
-          >
-            Agendar Consultoría Gratuita
-          </a>
-          <a 
-            href="#servicios" 
-            className="w-full sm:w-auto px-8 py-4 bg-transparent border border-white text-white font-bold rounded-sm hover:bg-white/10 transition-all uppercase tracking-wider text-sm"
-          >
-            Nuestros Servicios
-          </a>
+      <div className="container mx-auto px-6 md:px-12 relative z-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+          
+          {/* Main Headline */}
+          <div className="lg:col-span-8">
+            <h1 className="font-serif text-5xl md:text-7xl lg:text-9xl leading-[0.9] text-luxury-white tracking-tighter mb-8">
+              SOLUCIONES <br />
+              <span className="italic text-luxury-gold/90 font-light pr-4">LEGALES</span> <br />
+              PARA ASUNTOS <br />
+              COMPLICADOS
+            </h1>
+          </div>
+
+          {/* Subtext and CTA */}
+          <div className="lg:col-span-4 flex flex-col justify-end pb-4 lg:pl-12 border-l border-white/10">
+            <p className="text-luxury-white/80 text-lg leading-relaxed mb-10 font-sans font-light">
+              En MR & Asociados brindamos asesoría legal integral con un enfoque humano y profesional. 
+              Protegemos lo que más importa.
+            </p>
+            
+            <a 
+              href="#contacto" 
+              className="hover-trigger group relative w-fit px-8 py-4 overflow-hidden rounded-full bg-white/5 backdrop-blur-sm border border-white/10 hover:border-luxury-gold/50 transition-all duration-300"
+            >
+              <div className="absolute inset-0 w-0 bg-luxury-gold transition-all duration-[250ms] ease-out group-hover:w-full opacity-10"></div>
+              <span className="relative text-sm font-bold uppercase tracking-widest text-luxury-white group-hover:text-luxury-gold transition-colors">
+                Agendar Consultoría
+              </span>
+            </a>
+          </div>
+
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-10 left-6 md:left-12 animate-bounce">
+          <span className="text-[10px] text-luxury-muted uppercase tracking-widest writing-vertical-lr">Scroll Down</span>
         </div>
       </div>
     </section>

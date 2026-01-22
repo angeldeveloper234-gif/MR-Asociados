@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Scale } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,99 +7,64 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'Inicio', href: '#inicio' },
-    { name: 'Servicios', href: '#servicios' },
-    { name: 'Nosotros', href: '#nosotros' },
-    { name: 'Equipo', href: '#equipo' },
-    { name: 'Contacto', href: '#contacto' },
-  ];
-
   return (
-    <nav className={`fixed w-full z-40 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-2' : 'bg-transparent py-4'}`}>
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex justify-between items-center">
-          
-          {/* Logo */}
-          <a href="#inicio" className="flex items-center gap-2 group">
-            <div className={`p-2 rounded-lg ${scrolled ? 'bg-petrol-900 text-white' : 'bg-white/90 text-petrol-900'}`}>
-              <Scale className="w-6 h-6" />
-            </div>
-            <div className="flex flex-col">
-              <span className={`font-serif text-xl font-bold tracking-wide ${scrolled ? 'text-petrol-900' : 'text-white'}`}>
-                MR & Asociados
-              </span>
-              <span className={`text-[0.65rem] tracking-widest uppercase ${scrolled ? 'text-gray-600' : 'text-gray-200'}`}>
-                Despacho Legal
-              </span>
-            </div>
-          </a>
-
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className={`text-sm font-semibold tracking-wide hover:text-petrol-500 transition-colors ${scrolled ? 'text-gray-700' : 'text-gray-100 hover:text-white'}`}
-              >
-                {link.name}
-              </a>
-            ))}
-            <a
-              href="#contacto"
-              className={`px-5 py-2 rounded-md font-semibold text-sm transition-all ${
-                scrolled 
-                  ? 'bg-petrol-900 text-white hover:bg-petrol-800' 
-                  : 'bg-white text-petrol-900 hover:bg-gray-100'
-              }`}
-            >
-              Agendar Cita
-            </a>
+    <nav className={`fixed w-full z-50 transition-all duration-500 ease-out ${scrolled ? 'py-4 bg-luxury-black/80 backdrop-blur-md border-b border-white/5' : 'py-8 bg-transparent'}`}>
+      <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
+        
+        {/* Logo */}
+        <a href="#inicio" className="hover-trigger relative group z-50">
+          <div className="flex flex-col">
+            <span className="font-serif text-2xl font-bold tracking-tight text-luxury-white">
+              MR <span className="text-luxury-gold">&</span> ASOCIADOS
+            </span>
+            <span className="text-[0.6rem] tracking-[0.2em] uppercase text-luxury-muted group-hover:text-white transition-colors">
+              Despacho Legal
+            </span>
           </div>
+        </a>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 rounded-md text-gray-600"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Menu"
-          >
-            {isOpen ? (
-              <X className={`w-6 h-6 ${scrolled ? 'text-gray-800' : 'text-white'}`} />
-            ) : (
-              <Menu className={`w-6 h-6 ${scrolled ? 'text-gray-800' : 'text-white'}`} />
-            )}
-          </button>
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-12">
+          {['Servicios', 'Firma', 'Contacto'].map((item) => (
+            <a
+              key={item}
+              href={`#${item.toLowerCase()}`}
+              className="hover-trigger text-xs font-bold uppercase tracking-widest text-luxury-white/70 hover:text-luxury-gold transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-luxury-gold after:transition-all after:duration-300 hover:after:w-full"
+            >
+              {item}
+            </a>
+          ))}
         </div>
 
-        {/* Mobile Nav Dropdown */}
-        {isOpen && (
-          <div className="md:hidden absolute top-full left-0 w-full bg-white border-t border-gray-100 shadow-xl flex flex-col p-4 gap-4 animate-in slide-in-from-top-2">
-            {navLinks.map((link) => (
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden hover-trigger text-luxury-white z-50"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+
+        {/* Mobile Nav Overlay */}
+        <div className={`fixed inset-0 bg-luxury-black z-40 flex items-center justify-center transition-opacity duration-500 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+          <div className="flex flex-col gap-8 text-center">
+            {['Inicio', 'Servicios', 'Firma', 'Contacto'].map((item) => (
               <a
-                key={link.name}
-                href={link.href}
-                className="text-gray-800 font-medium py-2 px-4 hover:bg-petrol-50 rounded-lg"
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className="font-serif text-4xl text-luxury-white hover:text-luxury-gold transition-colors hover:italic"
                 onClick={() => setIsOpen(false)}
               >
-                {link.name}
+                {item}
               </a>
             ))}
-            <a
-              href="#contacto"
-              className="bg-petrol-900 text-white text-center py-3 rounded-lg font-semibold mt-2"
-              onClick={() => setIsOpen(false)}
-            >
-              Agendar Consultoría
-            </a>
           </div>
-        )}
+        </div>
       </div>
     </nav>
   );

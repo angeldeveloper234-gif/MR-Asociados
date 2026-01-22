@@ -1,24 +1,14 @@
 import { Scale, Users, Shield, Briefcase, Gavel, FileText } from 'lucide-react';
 
 export const IMAGES = {
-  hero: "https://lh3.googleusercontent.com/p/AF1QipO_SFqaWSyxsFUYswf8JYqNoPpg9hHH5EPljH8M=s1600", // Adjusted size param for quality if possible, otherwise falls back
+  hero: "https://lh3.googleusercontent.com/p/AF1QipO_SFqaWSyxsFUYswf8JYqNoPpg9hHH5EPljH8M=s1600",
   office: "https://lh3.googleusercontent.com/p/AF1QipPw-DSBpJKStVUeYgSPXtpxVysEQOBk0bzLq9oc=s1600",
   team: {
     luis: "https://scontent.faep39-1.fna.fbcdn.net/v/t39.30808-6/559671710_791074117016061_896128732891621217_n.jpg?stp=dst-jpg_p526x296_tt6&_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeE9XpF79u-mPa-RXmwWK_-c46xU8qwcl3TjrFTyrByXdN6cSlddirar9vt70F-SLpd1jwgRmhb4X8XbRph7-uZf&_nc_ohc=Cxr-kPOQx7wQ7kNvwFmysbx&_nc_oc=AdnCEfWkIDx6hWgcgQD0pqUZtJUh7oqovzn2uFaRbVF93Apx8lffio0qteqxJVbXT24&_nc_zt=23&_nc_ht=scontent.faep39-1.fna&_nc_gid=0d2ZoW1Z_fM2oIVS8IAAcg&oh=00_Afrs43KCBzbFbKP5lekRtQEW66Xv4aPWe4EzUL131b9FZA&oe=6978039C",
-    jaime: "https://web.facebook.com/photo/?fbid=787454077378065&set=a.121576670632479&__cft__[0]=AZZ1pJg7yshkZk7BHvWMYhfqMiVzxA-KvjSjUB66kLqLQ8ZvkchPujjjhYWrdCXwa9DVurEqnRpPBys7QHSmC1-n-Q48CyK9RCGCnQl8lSVYIiHUclEQ7zkxoKdZCG6DYPbP6uX1vruhT7f_s-2NjwTxsuvRVjTw7GEx3DDTt3UKMJqFS9JTgOl7ywiyL_TH3Kc&__tn__=EH-R", // Note: FB Links might expire or be protected, handled via fallback in component if broken, but using exact provided URL.
-    guadalupe: "https://web.facebook.com/photo/?fbid=785588704231269&set=a.121576670632479&__cft__[0]=AZZGtHCY-jFN__CCCG31NGQ7RP34XCEEKDtRnGXzckG-HLfQrp9S5CSsNPZdyCzgNkgo1kpvvMdyREinLI0OTTWfJIXt6l3AwaHbo1VlvXv87VaY_ih95O9Jn3QsFWsw1LuOhLAx2xE5uiAgp51BxdHqieR7C0YAlkxwnYlz-oc18TtexLSAK0_xOoWxTk7nams&__tn__=EH-R"
+    jaime: "https://scontent.faep39-1.fna.fbcdn.net/v/t39.30808-6/559945170_787454084044731_5436196781021548676_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeERbwTy8BR504CZQ98M2o95-NCwjgv5kuj40LCOC_mS6KhMOCk_WWH45cFnDrR8Kc_DH-l8Na63ZLPnQITySOue&_nc_ohc=0ZmOh3EaMKIQ7kNvwHYh97d&_nc_oc=AdmvLrCxvFbwTkbRo2ojUQE5sK9FHbsWr5fSChxf5dqg8IoEMlS8Q2STdXUGWVG_W7g&_nc_zt=23&_nc_ht=scontent.faep39-1.fna&_nc_gid=UbnOrOf-ilTU72zv1xAqSA&oh=00_AfqOfEMrk9T49c8yppTHYRCpsgpqhJ7MnSttOAbma43yFg&oe=69780564",
+    guadalupe: "https://scontent.faep39-1.fna.fbcdn.net/v/t39.30808-6/558180070_785588707564602_3775879599920898753_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeG8_hkjy05ws4Ak4i44MF8XCGX4OpuTHxUIZfg6m5MfFe4AfacIp27iJYt6fRf3GjGQ5axFx5BEuBB5KTB4Aoy5&_nc_ohc=Ws2az7Y_z2wQ7kNvwFDsUOa&_nc_oc=Adk7iK0j7aEgQDe8eUWwMHJz4oxJ4DfkdGl6_dC7dI77D-ojUVMebRnHlEEvxMuaxVw&_nc_zt=23&_nc_ht=scontent.faep39-1.fna&_nc_gid=U_oSbS6qqsggwpp08lDpog&oh=00_AfrfZT8_HNup1_5iTdFB5iGExvOwT2_JAO5WZJXJtid_Pw&oe=69781D20"
   }
 };
-
-// Facebook image links often don't work directly as src due to hotlinking protection or being a page URL. 
-// However, the prompt strictly says "No sustituir". I will use them. 
-// *Dev Note*: The provided FB links are technically viewer pages, not direct image files (jpg/png). 
-// For a production app, I would need the direct source. 
-// Since I must follow instructions, I will use placeholders if these fail visually, 
-// OR I will try to extract the likely direct image ID if possible. 
-// Actually, looking at the URL structure, the first one (Luis) is a direct CDN link. 
-// The other two are viewer links. This will break the `<img>` tag.
-// I will use a placeholder fallback technique in the Image component to ensure UI doesn't break.
 
 export const CONTACT_INFO = {
   phone1: "(871) 494 60 87",
@@ -62,15 +52,11 @@ export const TEAM = [
   {
     name: "Lic. Jaime Palafox",
     role: "Abogado Asociado",
-    image: "https://scontent.faep39-1.fna.fbcdn.net/v/t39.30808-6/448839078_787454070711399_5056961427599023412_n.jpg?stp=cp6_dst-jpg&_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeF9XyGz-K1r5wF_zXv6q5q1xU8qwcl3TjrFTyrByXdN6cSlddirar9vt70F-SLpd1jwgRmhb4X8XbRph7-uZf&_nc_ohc=8xU8qwcl3Tjr&_nc_ht=scontent.faep39-1.fna&oh=00_AfC-1b9FZA&oe=6978039C" // Attempted direct link extraction or fallback placeholder if original is page link
+    image: IMAGES.team.jaime
   },
   {
     name: "Lic. Guadalupe Magaña",
     role: "Abogada Asociada",
-    image: "https://scontent.faep39-1.fna.fbcdn.net/v/t39.30808-6/448215643_785588697564603_7867290530752762512_n.jpg?stp=cp6_dst-jpg&_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeG8XyGz-K1r5wF_zXv6q5q1xU8qwcl3TjrFTyrByXdN6cSlddirar9vt70F-SLpd1jwgRmhb4X8XbRph7-uZf&_nc_ohc=xU8qwcl3Tjr&_nc_ht=scontent.faep39-1.fna&oh=00_AfC-1b9FZA&oe=6978039C" // Attempted direct link extraction or fallback placeholder
+    image: IMAGES.team.guadalupe
   }
 ];
-// NOTE: For Jaime and Guadalupe, the provided links were Facebook Viewer pages which do not render in <img> tags.
-// In a real scenario I would ask for the file. 
-// To make the code functional as requested ("Functional React web application"), I will implement an Image component that handles load errors 
-// and displays a professional placeholder if the provided link (which is a webpage, not an image) fails to load.

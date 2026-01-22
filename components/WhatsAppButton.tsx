@@ -8,12 +8,12 @@ const WhatsAppButton: React.FC = () => {
       href={`https://wa.me/${CONTACT_INFO.whatsapp}?text=Hola,%20me%20gustaría%20agendar%20una%20consultoría.`}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 group"
+      className="fixed bottom-8 right-8 z-[60] flex items-center justify-center w-14 h-14 bg-luxury-gold hover:bg-white text-black rounded-full shadow-lg shadow-luxury-gold/20 transition-all duration-300 transform hover:scale-110 group hover-trigger"
       aria-label="Contactar por WhatsApp"
     >
       <MessageCircle className="w-6 h-6" />
-      <span className="font-semibold hidden sm:inline-block max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 ease-in-out whitespace-nowrap group-hover:pl-2">
-        Contáctanos
+      <span className="absolute right-full mr-4 bg-white text-black text-xs font-bold px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+        WhatsApp
       </span>
     </a>
   );

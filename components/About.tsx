@@ -1,62 +1,87 @@
 import React from 'react';
-import { IMAGES } from '../constants';
-import { CheckCircle2 } from 'lucide-react';
+import { TEAM } from '../constants';
+import { MapPin } from 'lucide-react';
 
 const About: React.FC = () => {
   return (
-    <section id="nosotros" className="py-20 md:py-28 bg-white overflow-hidden">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+    <section id="firma" className="bg-luxury-black py-32 relative z-20">
+      <div className="container mx-auto px-6 md:px-12">
+        
+        <div className="mb-16">
+          <h2 className="font-serif text-4xl md:text-6xl text-luxury-white mb-4">
+            La Firma <span className="font-sans text-2xl md:text-3xl text-luxury-muted font-light">&</span> Equipo
+          </h2>
+        </div>
+
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-3 gap-4 h-auto md:h-[800px]">
           
-          {/* Image Side */}
-          <div className="w-full lg:w-1/2 relative">
-            <div className="relative rounded-lg overflow-hidden shadow-2xl">
-              <img 
-                src={IMAGES.office} 
-                alt="Instalaciones MR & Asociados" 
-                className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-petrol-900/10 hover:bg-transparent transition-colors duration-500"></div>
+          {/* Block 1: Value - Human */}
+          <div className="hover-trigger col-span-1 md:col-span-2 row-span-1 bg-[#151515] p-8 border border-white/5 hover:border-luxury-gold/20 transition-all duration-500 group flex flex-col justify-between">
+            <div className="w-8 h-8 rounded-full border border-luxury-gold/30 flex items-center justify-center">
+              <span className="text-luxury-gold text-xs">01</span>
             </div>
-            {/* Decorative Element */}
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-petrol-50 rounded-full -z-10 hidden lg:block"></div>
-            <div className="absolute -top-6 -left-6 w-32 h-32 border-2 border-petrol-100 rounded-full -z-10 hidden lg:block"></div>
+            <h3 className="font-serif text-3xl md:text-4xl italic text-luxury-white/90 group-hover:text-luxury-white transition-colors">
+              "Trato Humano y <br/><span className="text-luxury-gold">Profesional</span>"
+            </h3>
           </div>
 
-          {/* Content Side */}
-          <div className="w-full lg:w-1/2">
-            <span className="text-petrol-800 font-bold tracking-widest text-sm uppercase mb-2 block">
-              Sobre la Firma
-            </span>
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-8">
-              Experiencia y <span className="text-petrol-800">Compromiso Jurídico</span>
-            </h2>
-            
-            <p className="text-gray-600 text-lg leading-relaxed mb-6">
-              Somos un despacho jurídico comprometido con la obtención de resultados justos. 
-              Nos especializamos en el manejo de casos de alta complejidad, ofreciendo a nuestros clientes 
-              la tranquilidad de una defensa experta, transparente y cercana.
-            </p>
-            
-            <p className="text-gray-600 text-lg leading-relaxed mb-8">
-              Nuestra trayectoria en la región nos respalda como su aliado legal de confianza en Torreón y todo Coahuila.
-            </p>
-
-            <div className="space-y-4 mb-8">
-              {['Trato Humano y Profesional', 'Estrategia Legal Personalizada', 'Ética y Transparencia'].map((item) => (
-                <div key={item} className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-petrol-500 flex-shrink-0" />
-                  <span className="text-gray-800 font-medium">{item}</span>
-                </div>
-              ))}
+          {/* Block 2: Team Member 1 (Luis) */}
+          <div className="hover-trigger col-span-1 md:col-span-1 row-span-1 md:row-span-2 relative group overflow-hidden border border-white/5">
+            <img src={TEAM[0].image} alt={TEAM[0].name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent p-6 flex flex-col justify-end">
+              <h4 className="text-luxury-white font-serif text-xl">{TEAM[0].name}</h4>
+              <p className="text-luxury-gold text-xs uppercase tracking-widest">{TEAM[0].role}</p>
             </div>
+          </div>
 
-            <a 
-              href="#contacto" 
-              className="inline-block px-8 py-3 bg-petrol-900 text-white font-semibold rounded hover:bg-petrol-800 transition-colors shadow-lg shadow-petrol-900/20"
-            >
-              Conoce Más
-            </a>
+           {/* Block 3: Location Authority */}
+           <div className="hover-trigger col-span-1 md:col-span-1 row-span-1 bg-luxury-white/5 p-8 border border-white/5 flex flex-col items-center justify-center text-center gap-4 group">
+             <div className="p-4 rounded-full bg-luxury-gold/10 text-luxury-gold group-hover:bg-luxury-gold group-hover:text-black transition-all duration-500">
+                <MapPin className="w-6 h-6" />
+             </div>
+             <div>
+               <p className="text-luxury-white font-bold text-lg">Torreón</p>
+               <p className="text-luxury-muted text-sm">y todo Coahuila</p>
+             </div>
+          </div>
+
+          {/* Block 4: Value - Strategy */}
+          <div className="hover-trigger col-span-1 md:col-span-2 row-span-1 bg-[#151515] p-8 border border-white/5 hover:border-luxury-gold/20 transition-all duration-500 flex flex-col justify-between group">
+             <div className="w-8 h-8 rounded-full border border-luxury-gold/30 flex items-center justify-center">
+              <span className="text-luxury-gold text-xs">02</span>
+            </div>
+             <h3 className="font-sans font-bold text-2xl md:text-3xl text-luxury-white/80 uppercase tracking-tighter group-hover:tracking-normal transition-all duration-500">
+              Estrategia Legal <span className="text-transparent stroke-text stroke-white text-stroke-1">Personalizada</span>
+            </h3>
+          </div>
+
+          {/* Block 5: Team Member 2 (Jaime) */}
+          <div className="hover-trigger col-span-1 row-span-1 relative group overflow-hidden border border-white/5">
+             <img src={TEAM[1].image} alt={TEAM[1].name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110" />
+             <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent p-4 flex flex-col justify-end">
+               <h4 className="text-luxury-white font-serif text-lg">{TEAM[1].name}</h4>
+               <p className="text-luxury-gold text-[10px] uppercase tracking-widest">{TEAM[1].role}</p>
+             </div>
+          </div>
+
+           {/* Block 6: Team Member 3 (Guadalupe) */}
+           <div className="hover-trigger col-span-1 row-span-1 relative group overflow-hidden border border-white/5">
+             <img src={TEAM[2].image} alt={TEAM[2].name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110" />
+             <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent p-4 flex flex-col justify-end">
+               <h4 className="text-luxury-white font-serif text-lg">{TEAM[2].name}</h4>
+               <p className="text-luxury-gold text-[10px] uppercase tracking-widest">{TEAM[2].role}</p>
+             </div>
+          </div>
+
+          {/* Block 7: Value - Ethics */}
+          <div className="hover-trigger col-span-1 md:col-span-2 row-span-1 bg-[#151515] p-8 border border-white/5 hover:border-luxury-gold/20 transition-all duration-500 flex flex-col justify-between md:col-start-3 md:row-start-3">
+             <div className="w-8 h-8 rounded-full border border-luxury-gold/30 flex items-center justify-center">
+              <span className="text-luxury-gold text-xs">03</span>
+            </div>
+             <h3 className="font-serif text-2xl text-luxury-white text-right">
+              Ética & <br/> <span className="italic text-3xl">Transparencia</span>
+            </h3>
           </div>
 
         </div>
